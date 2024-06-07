@@ -1,0 +1,30 @@
+version: 3
+automerge: true
+delete_source_branch_on_merge: true
+projects:
+
+- name: network
+  dir: ./network/
+  autoplan:
+    enabled: true
+    when_modified:
+    - '*.hcl'
+    - '**/**'
+    - '**.tf'
+
+# - name: cluster
+#   dir: ./cluster/
+#   autoplan:
+#     enabled: true
+#     when_modified:
+#     - '*.hcl'
+#     - '**/**'
+#     - '**.tf'
+
+workflows:
+  vault-workflow:
+    plan:
+      steps:
+      - init
+      - plan:
+  

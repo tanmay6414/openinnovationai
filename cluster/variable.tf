@@ -42,8 +42,10 @@ data "aws_eks_addon_version" "kube_proxy" {
 }
 
 data "terraform_remote_state" "network" {
-  backend = "local"
+  backend = "s3"
   config = {
-    path = "../network/terraform.tfstate"
+    bucket                  = "terraform-test-eks"
+    key                     = "network/network.tfstate"
+    region                  = "ap-south-1"
   }
 }
