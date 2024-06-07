@@ -59,7 +59,7 @@ module "eks" {
         create_security_group                 = false
         desired_size                          = 1
         iam_role_additional_policies          = [
-            "arn:aws:iam::<accid>:policy/TestCluster-autoscaler",
+            "arn:aws:iam::768688893088:policy/TestCluster-autoscaler",
         ]
         instance_types                        = [
             "r5a.xlarge",
