@@ -16,4 +16,4 @@ spec:
           enabled: true
           hostname: phpmyadmin.devk8s.vibrenthealth.com
     repoURL: demo.goharbor.io/openinnovationai
-    targetRevision: 0.1.0
+    targetRevision: 1.2.0
