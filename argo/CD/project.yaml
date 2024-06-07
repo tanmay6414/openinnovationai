@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: testcluster
+  namespace: argo-cd
+spec:
+  description: Project created for managing all application in eks cluster
+  destinations:
+  - name: TestProject
+    namespace: '*'
+    server: https://AE4F694840C9EAD87D8043C8EEBEE469.gr7.ap-south-1.eks.amazonaws.com
+  sourceRepos:
+  - '*'

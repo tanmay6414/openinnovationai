@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  url: aHR0cHM6Ly9naXRodWIuY29tL3Rhbm1heTY0MTQvb3Blbmlubm92YXRpb25haS5naXQ=
+kind: Secret
+metadata:
+  name: openinnovationai-state-github-repo
+  namespace: argo-cd

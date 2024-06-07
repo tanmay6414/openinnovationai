@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: admincluster
+  namespace: argo-cd
+spec:
+  description: Project created for managing all application in admin cluster
+  destinations:
+  - name: in-cluster
+    namespace: '*'
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - '*'

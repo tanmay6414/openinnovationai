@@ -1,0 +1,21 @@
+
+cluster/.terraform/*
+network/.terraform/*
+argo/.terraform/*
+
+cluster/.terraform
+network/.terraform
+argo/.terraform
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+*terraform.txt
+*.terraform.lock.hcl
+
+**/.DS_Store

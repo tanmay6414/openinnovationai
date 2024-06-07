@@ -1,0 +1,39 @@
+#--------------------------Install Helm Chart--------------------------------------------------
+## helm repo add argo https://argoproj.github.io/argo-helm
+## helm upgrade -i  argo-cd argo/argo-cd --version 4.9.0 -f argo.yaml -n argo-cd
+#--------------------------Install Helm Chart--------------------------------------------------
+crds:
+  keep: false
+server:
+  rbacConfig:
+    policy.default: role:readonly
+  extraArgs:
+   - --insecure
+  env:
+  - name: AWS_ACCESS_KEY_ID
+    value: <aws access key>
+  - name: AWS_SECRET_ACCESS_KEY
+    value: <aws secret key>
+  ingress:
+    enabled: true
+    hosts:
+      - argocd.openinnovationai.com
+    ingressClassName: nginx
+  config:
+    url: https://argocd.openinnovationai.com
+dex:
+  enabled: false
+
+applicationSet:
+  extraEnv:
+  - name: AWS_ACCESS_KEY_ID
+    value: <aws access key>
+  - name: AWS_SECRET_ACCESS_KEY
+    value: <aws secret key>
+
+controller:
+  env:
+  - name: AWS_ACCESS_KEY_ID
+    value: <aws access key>
+  - name: AWS_SECRET_ACCESS_KEY
+    value: <aws secret key>
