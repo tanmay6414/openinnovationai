@@ -12,14 +12,14 @@ projects:
     - '**/**'
     - '**.tf'
 
-# - name: cluster
-#   dir: ./cluster/
-#   autoplan:
-#     enabled: true
-#     when_modified:
-#     - '*.hcl'
-#     - '**/**'
-#     - '**.tf'
+- name: cluster
+  dir: ./cluster/
+  autoplan:
+    enabled: true
+    when_modified:
+    - '*.hcl'
+    - '**/**'
+    - '**.tf'
 
 workflows:
   vault-workflow:
