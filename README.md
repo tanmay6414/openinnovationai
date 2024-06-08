@@ -66,10 +66,12 @@ cluster-setup
 ![Info](assets/cluster/clusterinfo.png)
 
 #### post-init-cluster
-Additinal component like storage class, cluster autoscaler, vault authentication mechanism installing different operators include in post init.
-All those tool help us to manage workload in our cluster.
-In out module we have storageclass to dynamically creats volume for us, cluster-autoscaler to increase resources in cluster if we are exhausingexisying one to provide availability and fault-tolerence.
-I also nclude Hashicorp vault configuration to manage secrets throughout the ci/cd pipeline. It is also useful for providing temporory access to DB and AWS env.
+- Additinal component like storage class, cluster autoscaler, vault authentication mechanism installing different operators include in post init.
+- All those tool help us to manage workload in our cluster.
+![storage](assets/post-init/storage.png)
+- In out module we have storageclass to dynamically creats volume for us, cluster-autoscaler to increase resources in cluster if we are exhausingexisying one to provide availability and fault-tolerence.
+- I also nclude Hashicorp vault configuration to manage secrets throughout the ci/cd pipeline. It is also useful for providing temporory access to DB and AWS env.
+![Vault](assets/post-init/vault.png)
 
 #### auth security
 This module consist of dex and login ingress setup.
