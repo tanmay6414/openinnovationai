@@ -1,0 +1,73 @@
+
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: prometheus-operator
+    release: kube
+  name: kubernetes-apps
+  namespace: monitoring
+spec:
+  groups:
+    - name: kubernetes-apps
+      rules:
+        - alert: KubePodNotReady
+          annotations:
+            summary: |
+              Pod {{`{{`}} $labels.namespace {{`}}`}}/{{`{{`}} $labels.pod {{`}}`}} has been in a non-ready state for longer than 15 minutes.
+          expr: |-
+            sum by (namespace, pod) (
+              max by (namespace, pod) (
+                kube_pod_status_phase{job="kube-state-metrics",namespace=~".*", phase=~"Pending|Unknown"}
+              ) * on(namespace, pod) group_left(owner_kind) topk by(namespace,pod) (
+                1, max by(namespace, pod, owner_kind) (kube_pod_owner{owner_kind!="Job"})
+              )
+            ) > 0
+          for: 5m
+          labels:
+            severity: critical
+            team: open-innovation-alert
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: prometheus-operator
+    release: kube
+  name: pod-rules
+  namespace: monitoring
+spec:
+  groups:
+    - name: PodInErrorStateGroup
+      rules:
+        - alert: PodErrorAlert
+          annotations:
+            summary: '{{ $labels.pod }} pod in namespace: {{ $labels.namespace }} has a {{ $labels.reason }} error'
+          expr: max_over_time(kube_pod_container_status_waiting_reason{namespace=~'qa|monitoring', reason=~'CrashLoopBackOff|ImagePullBackOff|Error'}[2m])  > 0
+          for: 2m
+          labels:
+            severity: critical
+            team: open-innovation-alert
+--- 
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    app: prometheus-operator
+    release: kube
+  name: node-cordoned
+  namespace: monitoring
+spec:
+  groups:
+    - name: NodeCordoned
+      rules:
+        - alert: a-node-has-been-cordoned
+          annotations:
+            summary: A Node has been Cordoned or Drained.
+          expr: |
+            abs( (absent(draino_cordoned_nodes_total offset 2m) == 1 and count(draino_cordoned_nodes_total) > -1) or ((draino_cordoned_nodes_total  - draino_cordoned_nodes_total offset 2m) > 0) or (absent(sum(kube_node_spec_taint{key="node.kubernetes.io/unschedulable"})) - (sum(kube_node_spec_taint{key="node.kubernetes.io/unschedulable"} offset 2m))) or ((sum(kube_node_spec_taint{key="node.kubernetes.io/unschedulable"})) - (sum(kube_node_spec_taint{key="node.kubernetes.io/unschedulable"} offset 2m)) > 0) ) > bool -1
+          for: 1m
+          labels:
+            severity: info
+            team: open-innovation-alert

@@ -9,7 +9,7 @@ following requirements
 - Autoscaling
 
 ### Tool Used
-- SCM - GitGub
+- SCM - GitHub
 - Containerization - Docker
 - Orchestration - Kubenrtes
 - Cloud - AWS
@@ -55,6 +55,7 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 15. Package and published the helm and docker artifact on harbor repository.
 16. If branch == master, directly update the QA env  ArgoCD manifest file in openinnovationai repo
 17. If branch == release/*, create a PR on release branch on open a pull request on openinnovationai repo with updated version.
+![CI](assets/jenkins/jenkins.png)
 
 
 ### Creating Cluster and its required resources
@@ -236,3 +237,73 @@ spec:
 - We can provide access for dev and qa as per there requirnment, they can take ownership of there app.
 ![App](assets/argo/apps.png)
 ![Sync](assets/argo/sync.png)
+
+## Setup Monitoring and alerting on application
+- I used prometheus stack for alerting and monitoring purpose
+- Prometheus collect metrics thjroughout the cluster with help of its exporter.
+- I have define a [PrometheusRule](cluster-setup/monitoring/rule.yaml) bases on out requirnment and can confiugure prometheus to send alert to alertmanagert.
+- I have configured configure alert manager to send notification on different channel like slack, email pagerduty.
+- Also Newrelic and pingdom to have synthetic check on out application URL and Newrelic scripted browser to ensure out application is up and running
+- Finally we make use of Newrelic dashboard and grafana dashboard for data visualization
+- We can use newrelic logs for observability purpose.
+- We can also create a a on call schedule in pagerduty and route this alert to pagerduty, so that on call person get to know about any outages.
+
+### Install Prometheus Stack
+- Prometheus stack is installed as helm chart
+- It include prometheus controller, alermanager controller, grafana, and thanos.
+- **Helm values file for prometheus setup**
+```
+prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations: 
+      kubernetes.io/ingress.class: nginx
+    hosts:
+    - metrics.devk8s.vibrenthealth.com
+  prometheusSpec:
+    externalUrl: "https://metrics.devk8s.vibrenthealth.com"
+    alerting:
+      alertmanagers:
+        - namespace: monitoring
+          name: alertmanager-main
+          port: web
+```
+- **Helm values for alertmanager with sample receiver**
+```
+alertmanager:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations: 
+      kubernetes.io/ingress.class: nginx
+    hosts:
+      - alerts.devk8s.vibrenthealth.com
+  alertmanagerSpec: 
+    externalUrl: "https://alerts.devk8s.vibrenthealth.com"
+    config:
+      global:
+        slack_api_url: 'https://hooks.slack.com/services/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'
+        resolve_timeout: 5m
+      route:
+        receiver: "slack-receiver"
+        group_by: ["alertname"]
+        group_wait: 30s
+        group_interval: 1m
+        repeat_interval: 5m
+        routes:
+        - match:
+          severity: critical
+      receivers:
+        - name: "slack-receiver"
+          slack_configs:
+            - api_url: https://hooks.slack.com/services/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
+              channel: "#testchannel"
+              send_resolved: true
+              title: "[{{ .Status }}] {{ .GroupLabels.alertname }} {{ .CommonLabels.severity }}"
+              text: "{{ .Annotations.summary }}\n{{ .Annotations.description }}"
+```
+- Apply default prometheus rule for kubenrtes (easily available on google)
+- [Sample Rule](/cluster-setup/monitoring/rule.yaml)
+- After intentinally stoping application in qa namespace we got below notification on slack.
+![Alert](/assets/monitoring/alert.png)
