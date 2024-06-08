@@ -3,10 +3,11 @@
 [Open Innovation Assignment](#problem-statement)<br>
 [Proposed Solution](#proposed-solution)<br>
 [frontend-backend-database Application Structure](#frontend-backend-database-application-structure)<br>
-[Infrastructure CI/CD Process](#infrastructure-cicd-process)<br>
-[Application CI/CD Process](#application-cdcd-process)<br>
-[Monitoring Process](monitoring-process)<br>
-[How to achieve HA](#how-to-achieve-ha)<br>
+### Process explanation
+    [Infrastructure CI/CD Process](#infrastructure-cicd-process)<br>
+    [Application CI/CD Process](#application-cdcd-process)<br>
+    [Monitoring Process](monitoring-process)<br>
+    [How to achieve HA](#how-to-achieve-ha)<br>
 [Release process](#release-process)<br>
 [Creating Cluster and its required resources](/ClusterSetup.md)<br>
 [Explaining CD process for Cluster](/ClusterDeploymentCD.md)<br>
