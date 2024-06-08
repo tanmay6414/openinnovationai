@@ -2,11 +2,11 @@
 [Proposed Solution](#proposed-solution)<br>
 [frontend-backend-database Application Structure](#frontend-backend-database-application-structure)<br>
 [Infrastructure CI/CD Process](#infrastructure-cicd-process)<br>
-[Application CI/CD Process](#application-cdcd-process)
-[Monitoring Process](monitoring-process)
-[How to achieve HA](#how-to-achieve-ha)
-[Release process](#release-process)
-[Creating Cluster and its required resources](#creating-cluster-and-its-required-resources)
+[Application CI/CD Process](#application-cdcd-process)<br>
+[Monitoring Process](monitoring-process)<br>
+[How to achieve HA](#how-to-achieve-ha)<br>
+[Release process](#release-process)<br>
+[Creating Cluster and its required resources](/ClusterSetup.md)<br>
 
 ### Problem Statement
 You are tasked to implement a platform to support a microservices architecture composed of a backend service, frontend service and PostgreSQL database with the
@@ -83,36 +83,6 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 17. If branch == release/*, create a PR on release branch on open a pull request on openinnovationai repo with updated version.
 ![CI](assets/jenkins/jenkins.png)
 
-
-### Creating Cluster and its required resources
-
-For creating kubenrtes cluster along with its network and other component, I am using Terraform.
-We have different tool as well like Ansible, Cloud formation but each one have its own limitation.
-Ansible can not store the state of infrastructure and cloud formation is paid tool by AWS which having limitation to AWS resources.
-On other hand Terraform is free tool which supporting storing statefile at different location along with vast community support and have provider for almost each tool which we can consider of in DevOps field.
-
-In this repository [cluster-setup](cluster-setup) directory contain all the Terraform configuration files
-Directory structure for **cluster-setup**
-```
-cluster-setup
-├── cluster
-│   ├── main.tf
-│   ├── provider.tf
-│   └── variable.tf
-├── dex
-├── ingress
-├── network
-│   ├── main.tf
-│   ├── output.tf
-│   ├── provider.tf
-│   └── variable.tf
-├── post-init-cluster
-│   ├── main.tf
-│   ├── provider.tf
-│   └── variable.tf
-└── velero
-```
-You can find more information here [cluster info](ClusterSetup.md)
 
 ## Automated Deployment for Cluster
 - We are using Terraform for provisioning our cluster, and it consist of different provider and there configuration, so for easy to deploy and consistency we need contineous deployment for or cluster code.

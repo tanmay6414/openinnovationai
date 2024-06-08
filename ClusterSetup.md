@@ -1,4 +1,33 @@
 
+# Creating Cluster and its required resources
+
+For creating kubenrtes cluster along with its network and other component, I am using Terraform.
+We have different tool as well like Ansible, Cloud formation but each one have its own limitation.
+Ansible can not store the state of infrastructure and cloud formation is paid tool by AWS which having limitation to AWS resources.
+On other hand Terraform is free tool which supporting storing statefile at different location along with vast community support and have provider for almost each tool which we can consider of in DevOps field.
+
+In this repository [cluster-setup](cluster-setup) directory contain all the Terraform configuration files
+Directory structure for **cluster-setup**
+```
+cluster-setup
+├── cluster
+│   ├── main.tf
+│   ├── provider.tf
+│   └── variable.tf
+├── dex
+├── ingress
+├── network
+│   ├── main.tf
+│   ├── output.tf
+│   ├── provider.tf
+│   └── variable.tf
+├── post-init-cluster
+│   ├── main.tf
+│   ├── provider.tf
+│   └── variable.tf
+└── velero
+```
+
 ## Network
 - Network folder contains configuration file related to VPC, subnet, routing and different component of network.
 - it consist of 2 availability zone for **high availability** so even if one az goes down we have compute power to schedule out application in another az. 
@@ -19,7 +48,7 @@
 - Security group manages in out access to our network and some IAM roles with policies are also get created for nodes to access aws resources like autoscaling.
 ![Info](assets/cluster/clusterinfo.png)
 
-### post-init-cluster
+## post-init-cluster
 - Additinal component like storage class, cluster autoscaler, vault authentication mechanism installing different operators include in post init.
 - All those tool help us to manage workload in our cluster.
 ![storage](assets/post-init/storage.png)
