@@ -1,5 +1,4 @@
-# Open Innovation Assignment
-
+[Open Innovation Assignment](#problem-statement)
 ### Problem Statement
 You are tasked to implement a platform to support a microservices architecture composed of a backend service, frontend service and PostgreSQL database with the
 following requirements
@@ -60,7 +59,7 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 2. I prefer to maintain 2 main branched one master and release/*. Master for dev to test and release/* for higher env.
 3. Devloper created a Pull request on feature branch.
 4. Jenkins CI get trigger.
-5. At first Checkout from version control.
+5. Checkout from version control.
 6. Adding/updating required helm repo for pulling and pushing helm chart
 7. Building application binary.
 8. Execute compliance check and Unit test.
@@ -69,7 +68,7 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 11. Installed required dependency application
 12. Execute integration test on whole application stack.
 13. Execute sonar test
-14. If everything works update the docker images key in helm chart by <branch-name>-<short-commit-sha> and helm chart by <existing version>-<branch-name>-<short-commit-sha>.
+14. If everything works update the docker images key in helm chart by branch-name-short-commit-sha and helm chart by existing version-branch-name-short-commit-sha
 15. Package and published the helm and docker artifact on harbor repository.
 16. If branch == master, directly update the QA env  ArgoCD manifest file in openinnovationai repo
 17. If branch == release/*, create a PR on release branch on open a pull request on openinnovationai repo with updated version.
