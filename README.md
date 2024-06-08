@@ -34,12 +34,54 @@ following requirements
 - **Monitoring -**
   - Using **Terratest**
 
-## frontend-backend-database structure
+## frontend-backend-database Application Structure
 I have created 2 github repository [openinnovationai-frontend](https://github.com/tanmay6414/openinnovationai-frontend) and [openinnovationai-backend](https://github.com/tanmay6414/openinnovationai-backend)
 - Used helm chart for application management
 - In backend used dependency helm chart for database, as it is tightly couple with backend, we can not deploy single backend pod.
 - Each repo has its own [CI process](https://github.com/tanmay6414/openinnovationai-frontend/Jenkinsfile)
 - Created third repository [openinnovationai](https://github.com/tanmay6414/openinnovationai) for managing state of application and cluster
+
+
+<details>
+  <summary><h1>Infrastructure CI/CD Process</h1></summary>
+  ![CCICD](/assets/cluster/ClusterCICD.jpg)
+  ### Heading
+  1. Foo
+  2. Bar
+     * Baz
+     * Qux
+
+  ### Some Javascript
+  ```js
+  function logSomething(something) {
+    console.log('Something', something);
+  }
+  ```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Release process
 1. Each Application have its own Github Repository.
