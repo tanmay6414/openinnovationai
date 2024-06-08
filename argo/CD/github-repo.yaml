@@ -5,3 +5,5 @@ kind: Secret
 metadata:
   name: openinnovationai-state-github-repo
   namespace: argo-cd
+  labels:
+    argocd.argoproj.io/secret-type: repository

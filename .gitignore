@@ -19,3 +19,4 @@ override.tf.json
 *.terraform.lock.hcl
 
 **/.DS_Store
+argo/terraform/.terraform/
