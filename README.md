@@ -42,22 +42,9 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 - Created third repository [openinnovationai](https://github.com/tanmay6414/openinnovationai) for managing state of application and cluster
 
 
-<details>
-  <summary><h1>Infrastructure CI/CD Process</h1></summary>
-  ![CCICD](/assets/cluster/ClusterCICD.jpg)
-  ### Heading
-  1. Foo
-  2. Bar
-     * Baz
-     * Qux
+# Infrastructure CI/CD Process
+![CCICD](/assets/cluster/ClusterCICD.jpg)
 
-  ### Some Javascript
-  ```js
-  function logSomething(something) {
-    console.log('Something', something);
-  }
-  ```
-</details>
 
 
 
