@@ -3,16 +3,17 @@
   - [Open Innovation Assignment](#problem-statement)<br>
   - [Proposed Solution](#proposed-solution)<br>
   - [frontend-backend-database Application Structure](#frontend-backend-database-application-structure)<br>
-  - **Process explanation**
+  - **Process Workflow**
     - [Infrastructure CI/CD Process](#infrastructure-cicd-process)<br>
     - [Application CI/CD Process](#application-cdcd-process)<br>
     - [Monitoring Process](monitoring-process)<br>
     - [How to achieve HA](#how-to-achieve-ha)<br>
-[Release process](#release-process)<br>
-[Creating Cluster and its required resources](/ClusterSetup.md)<br>
-[Explaining CD process for Cluster](/ClusterDeploymentCD.md)<br>
-[Explaining CD process for Application](/AppDeploymentCD.md)<br>
-[Explain monitoring and alerting process](/Monitoring.md)<br>
+  - **Process explanation**
+    - [Release process](#release-process)<br>
+    - [Creating Cluster and its required resources](/ClusterSetup.md)<br>
+    - [Explaining CD process for Cluster](/ClusterDeploymentCD.md)<br>
+    - [Explaining CD process for Application](/AppDeploymentCD.md)<br>
+    - [Explain monitoring and alerting process](/Monitoring.md)<br>
 
 ### Problem Statement
 You are tasked to implement a platform to support a microservices architecture composed of a backend service, frontend service and PostgreSQL database with the
