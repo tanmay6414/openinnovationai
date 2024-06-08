@@ -8,14 +8,54 @@ following requirements
 - Secure
 - Autoscaling
 
-### Proposed Solution
+### Tool Used
+- SCM - GitGub
+- Containerization - Docker
+- Orchestration - Kubenrtes
+- Cloud - AWS
+- Provisioning Infra - Terraform + Atlantis
+- Application deployment - Helm
+- Repository - Harbor
+- Application CI - Jenkins + Github Action
+- Application CD - ArgoCD
+- Monitoring - Prometheus + AlertManager
+- Observability - Grafana + Newrelic
 
+### Proposed Solution
 - I am using Docker package and manage above application as it consistent and isolated environment deployment across different application.
 - For orchestring docker container I am using Kubernetes. We have option like docker-sworm and other but kubenrtes have lots of advantages over such platform such as scalability, scheduling ease, easy administration, self healing, fault tolerent and kubenrtes is highly available along with good community support.
 - I am using AWS public cloud for hosting all those component.
 - For this solution, i am deploying Kubernetes cluster using EKS with managed node group. 
 >EKS is managed Kubernetes service provided by AWS which provide high availability (3 master), Enhance security, easy upgrade statergy.
 So that we can focus on system reliability rather than spending lots of time on administration.
+
+
+## frontend-backend-database structure
+I have created 2 github repository [openinnovationai-frontend](https://github.com/tanmay6414/openinnovationai-frontend) and [openinnovationai-backend](https://github.com/tanmay6414/openinnovationai-backend)
+- Used helm chart for application management
+- In backend used dependency helm chart for database, as it is tightly couple with backend, we can not deploy single backend pod.
+- Each repo has its own [CI process](https://github.com/tanmay6414/openinnovationai-frontend/Jenkinsfile)
+- Created third repository [openinnovationai](https://github.com/tanmay6414/openinnovationai) for managing state of application and cluster
+
+## Release process
+- Each Application have its own Github Repository.
+- I prefer to maintain 2 main branched one master and release/*. Master for dev to test and release/* for higher env.
+- Devloper created a Pull request on feature branch.
+- Jenkins CI get trigger.
+- At first Checkout from version control.
+- Adding/updating required helm repo for pulling and pushing helm chart
+- Building application binary.
+- Execute compliance check and Unit test.
+- Once this test passes we I am building my Dockerfile with **ci** tag on it and updating the docker image tag in helm values file. Also update the helm version by merging PR no and build name
+- Package this updated chart and deploy the sample application on kubenrtes.
+- Installed required dependency application
+- Execute integration test on whole application stack.
+- Execute sonar test
+- If everything works update the docker images key in helm chart by <branch-name>-<short-commit-sha> and helm chart by <existing version>-<branch-name>-<short-commit-sha>.
+- Package and published the helm and docker artifact on harbor repository.
+- If branch == master, directly update the QA env  ArgoCD manifest file in openinnovationai repo
+- If branch == release/*, create a PR on release branch on open a pull request on openinnovationai repo with updated version.
+
 
 ### Creating Cluster and its required resources
 
