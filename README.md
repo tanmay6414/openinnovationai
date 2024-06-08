@@ -106,9 +106,9 @@ projects:
 ```
 atlantis plan -p network
 ```
-[plan](assets/atlantis/plan.png)
+![Plan](assets/atlantis/plan.png)
 - If Pull request is not approved or plan is not successfull it wont allow you to apply. [Sample](https://github.com/tanmay6414/openinnovationai/pull/2)
-[Failed](assets/atlantis/failed.png)
+![Failed](assets/atlantis/failed.png)
 - If everything works out then after commenting **atlantis apply -p projectNmae** it will start applying terraform changes and if applied successfully merge the PR as well.
 - If apply failed PR will not get merges
-[Apply](assets/atlantis/apply.png)
+![Apply](assets/atlantis/apply.png)
