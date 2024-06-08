@@ -4,7 +4,7 @@ delete_source_branch_on_merge: true
 projects:
 
 - name: network
-  dir: ./network/
+  dir: .cluster-setup/network/
   autoplan:
     enabled: true
     when_modified:
@@ -13,7 +13,7 @@ projects:
     - '**.tf'
 
 - name: cluster
-  dir: ./cluster/
+  dir: .cluster-setup/cluster/
   autoplan:
     enabled: true
     when_modified:
@@ -22,7 +22,7 @@ projects:
     - '**.tf'
 
 - name: post-init
-  dir: ./post-int-cluster/
+  dir: .cluster-setup/post-int-cluster/
   autoplan:
     enabled: true
     when_modified:
