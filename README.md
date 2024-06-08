@@ -45,3 +45,45 @@ cluster-setup
 │   └── variable.tf
 └── velero
 ```
+
+#### Network
+Cluster folder contains configuration file related to VPC, subnet, routing and different component of network.
+it consist of 2 availability zone for **high availability** so even if one az goes down we have compute power to schedule out application in another az. 
+Also all the worker nodes are in pivate subnet so that **they can not be publically accessible**, and for internet connection in private subnet I am using NAT Gateway which is managed NAT instance by AWS.
+For creating network, I am using **Terraform AWS provider**
+
+#### Cluster
+Cluster consist of EKS cluster along with its component like Node group, storage volume (EBS) autoscaling group, launch template and some security groups and IAM role.
+Autoscaling group **fault toleration** to our cluster, it spin up instances immidiatly if our current instance/s is mark unhealthly in EC2. We have *min, max and desire* confuguration for managing those instances.
+We can also use spot node along with on demand node to manage cost in out infrastructure as spot node is ~70% cheaper than on demand
+Security group manages in out access to our network and some IAM roles with policies are also get created for nodes to access aws resources like autoscaling.
+
+#### post-init-cluster
+Additinal component like storage class, cluster autoscaler, vault authentication mechanism installing different operators include in post init.
+All those tool help us to manage workload in our cluster.
+In out module we have storageclass to dynamically creats volume for us, cluster-autoscaler to increase resources in cluster if we are exhausingexisying one to provide availability and fault-tolerence.
+I also nclude Hashicorp vault configuration to manage secrets throughout the ci/cd pipeline. It is also useful for providing temporory access to DB and AWS env.
+
+#### auth security
+This module consist of dex and login ingress setup.
+If you have Activve Directory or any other authenticating service mechanisms you can install dex to provide group bases access control to user.
+Lets say you have group k8s:Dev in AD and you want to provide them only read only access then you can achieve this by dex configuration.
+Dex along with login url gives you ability to provide short term access to kubenrtes
+This is a secure way for providing access to kubenrtes cluster
+
+### Velero
+Velero is used for backup purpose, so even if accidently you delete your env you will have backup to restore it.
+It has different pluging for different clouds provider to backup external resources like RDS and EBS.
+You have to mentioned backup location to keep your backup.
+You also can create backup schedule which help to periodically created backup as per your requirnment.
+We can also specify ttl with backup
+
+#### Ingress
+Ingress module is required to configure the URL's of your application.
+We have different other way to expose out app as well like LoadBalancer service but then we have to create load balancer for each url resulting increase cost.
+
+#### Monitoring
+Monitoring module consist of prometheus, grafana, alertmanager, thanos, newrelic setup.
+Prometheus help us to collect etrics within out cluster and even if our app is not supporting prometheus metrics we can use exporter to send prometheus redable data from application.
+Grafana useful for creating dahboard, which make it easy to understand current state of cluster
+Alertmanager is used to notify users through different channels when something goes wrong in the cluster.
