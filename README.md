@@ -45,11 +45,14 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 # Infrastructure CI/CD Process
 ![CCICD](/assets/cluster/ClusterCICD.jpg)
 
+# Application CI/CD Process
+![CCICD](/assets/argo/ApplicationCiCD.jpg)
 
+# Monitoring Process
+![CCICD](/assets/monitoring/Monitoring.jpg)
 
-
-
-
+# How to achieve HA
+![CCICD](/assets/cluster/HA.jpg)
 
 
 
