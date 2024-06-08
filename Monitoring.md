@@ -67,6 +67,6 @@ alertmanager:
 - Apply default prometheus rule for kubenrtes (easily available on google)
 - [Sample Rule](/cluster-setup/monitoring/rule.yaml)<br>
 - Alert get trigger in alertmanager
-[Manager](/assets/monitoring/alerts.png)
+![Manager](/assets/monitoring/alerts.png)
 - After intentinally draining a node we got below notification on slack.
 ![Alert](/assets/monitoring/alert.png)
