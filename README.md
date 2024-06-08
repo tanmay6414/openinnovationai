@@ -1,19 +1,19 @@
 # Open Innovation Assignment
 - ## Quick Links
-  - [Open Innovation Assignment](#problem-statement)<br>
-  - [Proposed Solution](#proposed-solution)<br>
-  - [frontend-backend-database Application Structure](#frontend-backend-database-application-structure)<br>
+  - [Open Innovation Assignment](#problem-statement)
+  - [Proposed Solution](#proposed-solution)
+  - [frontend-backend-database Application Structure](#frontend-backend-database-application-structure)
   - **Process Workflow**
-    - [Infrastructure CI/CD Process](#infrastructure-cicd-process)<br>
-    - [Application CI/CD Process](#application-cicd-process)<br>
-    - [Monitoring Process](#monitoring-process)<br>
-    - [How to achieve HA](#how-to-achieve-ha)<br>
+    - [Infrastructure CI/CD Process](#infrastructure-cicd-process)
+    - [Application CI/CD Process](#application-cicd-process)
+    - [Monitoring Process](#monitoring-process)
+    - [How to achieve HA](#how-to-achieve-ha)
   - **Process explanation**
-    - [Release process](#release-process)<br>
-    - [Creating Cluster and its required resources](/ClusterSetup.md)<br>
-    - [Explaining CD process for Cluster](/ClusterDeploymentCD.md)<br>
-    - [Explaining CD process for Application](/AppDeploymentCD.md)<br>
-    - [Explain monitoring and alerting process](/Monitoring.md)<br>
+    - [Release process](#release-process)
+    - [Creating Cluster and its required resources](/ClusterSetup.md)
+    - [Explaining CD process for Cluster](/ClusterDeploymentCD.md)
+    - [Explaining CD process for Application](/AppDeploymentCD.md)
+    - [Explain monitoring and alerting process](/Monitoring.md)
 
 ### Problem Statement
 You are tasked to implement a platform to support a microservices architecture composed of a backend service, frontend service and PostgreSQL database with the
@@ -91,8 +91,7 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 ![CI](assets/jenkins/jenkins.png)
 
 - **Process explanation**
-  - [Release process](#release-process)<br>
-  - [Creating Cluster and its required resources](/ClusterSetup.md)<br>
-  - [Explaining CD process for Cluster](/ClusterDeploymentCD.md)<br>
-  - [Explaining CD process for Application](/AppDeploymentCD.md)<br>
-  - [Explain monitoring and alerting process](/Monitoring.md)<br>
+  - [Creating Cluster and its required resources](/ClusterSetup.md)
+  - [Explaining CD process for Cluster](/ClusterDeploymentCD.md)
+  - [Explaining CD process for Application](/AppDeploymentCD.md)
+  - [Explain monitoring and alerting process](/Monitoring.md)
