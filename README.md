@@ -5,8 +5,8 @@
   - [frontend-backend-database Application Structure](#frontend-backend-database-application-structure)<br>
   - **Process Workflow**
     - [Infrastructure CI/CD Process](#infrastructure-cicd-process)<br>
-    - [Application CI/CD Process](#application-cdcd-process)<br>
-    - [Monitoring Process](monitoring-process)<br>
+    - [Application CI/CD Process](#application-cicd-process)<br>
+    - [Monitoring Process](#monitoring-process)<br>
     - [How to achieve HA](#how-to-achieve-ha)<br>
   - **Process explanation**
     - [Release process](#release-process)<br>
