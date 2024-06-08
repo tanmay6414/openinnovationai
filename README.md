@@ -91,3 +91,21 @@ environment:
 ```
 
 - After atlantis started on cluster, for configuring you github repository you need to add [atlantis.yaml](atlantis.yaml). Inside this file you can customize you CD workflow.
+
+### Working
+- As mentioned earlier Atlantis render diff on the github PR. You can find this [sample PR](https://github.com/tanmay6414/openinnovationai/pull/1)
+- You specifiy different project in your atlantis.yaml file and also planning statergy. If you want auto-plan whenever some one create PR you can mentioned it as below in your atlantis file
+```
+projects:
+- name: network
+  dir: .cluster-setup/network/
+  autoplan:
+    enabled: true
+```
+- If not you can run a plan by commenting on Github PR with project name 
+```
+atlantis plan -p network
+```
+- If Pull request is not approved or plan is not successfull it wont allow you to apply. [Sample](https://github.com/tanmay6414/openinnovationai/pull/2)
+- If everything works out then after commenting **atlantis apply -p projectNmae** it will start applying terraform changes and if applied successfully merge the PR as well.
+- If apply failed PR will not get merges 
