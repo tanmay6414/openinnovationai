@@ -8,20 +8,8 @@ following requirements
 - Secure
 - Autoscaling
 
-### Tool Used
-- SCM - GitHub
-- Containerization - Docker
-- Orchestration - Kubenrtes
-- Cloud - AWS
-- Provisioning Infra - Terraform + Atlantis
-- Application deployment - Helm
-- Repository - Harbor
-- Application CI - Jenkins + Github Action
-- Application CD - ArgoCD
-- Monitoring - Prometheus + AlertManager
-- Observability - Grafana + Newrelic
-
 ### Proposed Solution
+- **SCM -**  Github
 - **Infrastructure Platform -** 
   - I will used **AWS public cloud** for provisioning all my workloads.
   - AWS works on pay per use
