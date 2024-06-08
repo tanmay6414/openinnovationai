@@ -87,20 +87,3 @@ module "eks" {
     "KubernetesCluster"                         = null
   }
 }
-
-# resource "vault_kv_secret_v2" "kubeconfig" {
-#   mount = "kv"
-#   name  = "${var.cluster_env}/kubeconfig"
-#   cas   = 1
-#   data_json = jsonencode(
-#     {
-#       KUBECONFIG = templatefile("kubeconfig.tpl", { server = data.aws_eks_cluster.cluster.endpoint,
-#         certificate-authority-data = data.aws_eks_cluster.cluster.certificate_authority[0].data,
-#         cluster-name               = data.aws_eks_cluster.cluster.name
-#         cluster-fqdn               = "${var.cluster_env}.${var.cluster_domain}"
-#         aws_region                 = var.aws_region
-#         }
-#       )
-#     }
-#   )
-# }

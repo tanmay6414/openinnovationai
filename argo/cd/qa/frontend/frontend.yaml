@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend-app-qa
+  namespace: argo-cd
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+  destination:
+    name: TestCluster
+    namespace: qa
+  project: testcluster
+  sources:
+  -  chart: frontend
+     helm:
+      releaseName: frontend
+      valueFiles:
+      - $values/argo/cd/qa/frontend/values.yaml
+     repoURL: demo.goharbor.io/openinnovationai
+     targetRevision: 0.1.0
+  -  repoURL: 'https://github.com/tanmay6414/openinnovationai.git'
+     targetRevision: master
+     ref: values
