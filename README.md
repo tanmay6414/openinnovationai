@@ -38,23 +38,23 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 - Created third repository [openinnovationai](https://github.com/tanmay6414/openinnovationai) for managing state of application and cluster
 
 ## Release process
-- Each Application have its own Github Repository.
-- I prefer to maintain 2 main branched one master and release/*. Master for dev to test and release/* for higher env.
-- Devloper created a Pull request on feature branch.
-- Jenkins CI get trigger.
-- At first Checkout from version control.
-- Adding/updating required helm repo for pulling and pushing helm chart
-- Building application binary.
-- Execute compliance check and Unit test.
-- Once this test passes we I am building my Dockerfile with **ci** tag on it and updating the docker image tag in helm values file. Also update the helm version by merging PR no and build name
-- Package this updated chart and deploy the sample application on kubenrtes.
-- Installed required dependency application
-- Execute integration test on whole application stack.
-- Execute sonar test
-- If everything works update the docker images key in helm chart by <branch-name>-<short-commit-sha> and helm chart by <existing version>-<branch-name>-<short-commit-sha>.
-- Package and published the helm and docker artifact on harbor repository.
-- If branch == master, directly update the QA env  ArgoCD manifest file in openinnovationai repo
-- If branch == release/*, create a PR on release branch on open a pull request on openinnovationai repo with updated version.
+1. Each Application have its own Github Repository.
+2. I prefer to maintain 2 main branched one master and release/*. Master for dev to test and release/* for higher env.
+3. Devloper created a Pull request on feature branch.
+4. Jenkins CI get trigger.
+5. At first Checkout from version control.
+6. Adding/updating required helm repo for pulling and pushing helm chart
+7. Building application binary.
+8. Execute compliance check and Unit test.
+9. Once this test passes we I am building my Dockerfile with **ci** tag on it and updating the docker image tag in helm values file. Also update the helm version by merging PR no and build name
+10. Package this updated chart and deploy the sample application on kubenrtes.
+11. Installed required dependency application
+12. Execute integration test on whole application stack.
+13. Execute sonar test
+14. If everything works update the docker images key in helm chart by <branch-name>-<short-commit-sha> and helm chart by <existing version>-<branch-name>-<short-commit-sha>.
+15. Package and published the helm and docker artifact on harbor repository.
+16. If branch == master, directly update the QA env  ArgoCD manifest file in openinnovationai repo
+17. If branch == release/*, create a PR on release branch on open a pull request on openinnovationai repo with updated version.
 
 
 ### Creating Cluster and its required resources
@@ -152,3 +152,52 @@ atlantis plan -p network
 - If everything works out then after commenting **atlantis apply -p projectNmae** it will start applying terraform changes and if applied successfully merge the PR as well.
 - If apply failed PR will not get merges
 ![Apply](assets/atlantis/apply.png)
+
+
+## Automated Deployment for Application
+- Uses ArgoCD for CD process. Flux dont have any UI and not possible to give access to dev and QA. Tekton need lots of configuration and showing intermidiate issue.
+
+### Installation of ArgoCD
+- ArgoCD is installed as Helm chart on kubenrtes cluster.
+- have different component like controller, server, notification controller,workflow and repo server.
+- Helm values file for confuring argo with EKS
+```
+crds:
+  keep: false
+server:
+  rbacConfig:
+    policy.default: role:readonly
+  extraArgs:
+   - --insecure
+  env:
+  - name: AWS_ACCESS_KEY_ID
+    value: <access key>
+  - name: AWS_SECRET_ACCESS_KEY
+    value: <secret-key>
+  ingress:
+    enabled: true
+    hosts:
+      - argocd.devk8s.vibrenthealth.com
+    ingressClassName: nginx
+  config:
+    url: https://argocd.devk8s.vibrenthealth.com
+dex:
+  enabled: false
+
+applicationSet:
+  extraEnv:
+  - name: AWS_ACCESS_KEY_ID
+    value: <access key>
+  - name: AWS_SECRET_ACCESS_KEY
+    value: <secret-key>
+
+controller:
+  env:
+  - name: AWS_ACCESS_KEY_ID
+    value: <access key>
+  - name: AWS_SECRET_ACCESS_KEY
+    value: <secret-key>
+```
+- Once Deployed create one ArgoCD [application](argo/cd/app-of-app.yaml) and mentioned the githubrepository folder and apply this manually 
+- You also need to configure cluster, helm repo, harbor repo with it, you can find configuration [here](argo/) in this repository.
+- 
