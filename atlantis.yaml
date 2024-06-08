@@ -21,6 +21,15 @@ projects:
     - '**/**'
     - '**.tf'
 
+- name: post-init
+  dir: ./post-int-cluster/
+  autoplan:
+    enabled: true
+    when_modified:
+    - '*.hcl'
+    - '**/**'
+    - '**.tf'
+
 workflows:
   vault-workflow:
     plan:

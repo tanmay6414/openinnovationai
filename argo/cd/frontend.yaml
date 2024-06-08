@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend-app-qa
+  namespace: argo-cd
+spec:
+  destination:
+    name: in-cluster
+    namespace: qa
+  project: admincluster
+  source:
+    chart: frontend
+    helm:
+      values: |-
+        ingress:
+          enabled: true
+          hostname: phpmyadmin.devk8s.vibrenthealth.com
+    repoURL: demo.goharbor.io/openinnovationai
+    targetRevision: 0.1.0

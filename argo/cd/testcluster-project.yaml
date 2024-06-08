@@ -8,6 +8,6 @@ spec:
   destinations:
   - name: TestProject
     namespace: '*'
-    server: https://AE4F694840C9EAD87D8043C8EEBEE469.gr7.ap-south-1.eks.amazonaws.com
+    server: https://6FB0823BD96D3AA787CC634FE9D3CF29.gr7.ap-south-1.eks.amazonaws.com
   sourceRepos:
   - '*'

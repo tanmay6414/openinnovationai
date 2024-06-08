@@ -22,9 +22,9 @@ provider "aws" {
 }
 
 provider "argocd" {
-  server_addr = "argocd.devk8s.vibrenthealth.com"
+  server_addr = "argocd.openinnovationai.com"
   username    = "admin"
-  password    = "K6d649Bo7s9rG6tS"
+  password    = ""
   grpc_web    = true
   insecure    = true
 }
