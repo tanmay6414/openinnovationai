@@ -178,10 +178,10 @@ server:
   ingress:
     enabled: true
     hosts:
-      - argocd.devk8s.vibrenthealth.com
+      - argocd.mycluster.com
     ingressClassName: nginx
   config:
-    url: https://argocd.devk8s.vibrenthealth.com
+    url: https://argocd.mycluster.com
 dex:
   enabled: false
 
@@ -260,9 +260,9 @@ prometheus:
     annotations: 
       kubernetes.io/ingress.class: nginx
     hosts:
-    - metrics.devk8s.vibrenthealth.com
+    - metrics.mycluster.com
   prometheusSpec:
-    externalUrl: "https://metrics.devk8s.vibrenthealth.com"
+    externalUrl: "https://metrics.mycluster.com"
     alerting:
       alertmanagers:
         - namespace: monitoring
@@ -278,12 +278,12 @@ alertmanager:
     annotations: 
       kubernetes.io/ingress.class: nginx
     hosts:
-      - alerts.devk8s.vibrenthealth.com
+      - alerts.mycluster.com
   alertmanagerSpec: 
-    externalUrl: "https://alerts.devk8s.vibrenthealth.com"
+    externalUrl: "https://alerts.mycluster.com"
     config:
       global:
-        slack_api_url: 'https://hooks.slack.com/services/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'
+        slack_api_url: ""
         resolve_timeout: 5m
       route:
         receiver: "slack-receiver"
@@ -297,7 +297,7 @@ alertmanager:
       receivers:
         - name: "slack-receiver"
           slack_configs:
-            - api_url: https://hooks.slack.com/services/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
+            - api_url: ""
               channel: "#testchannel"
               send_resolved: true
               title: "[{{ .Status }}] {{ .GroupLabels.alertname }} {{ .CommonLabels.severity }}"
