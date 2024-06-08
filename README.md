@@ -46,7 +46,7 @@ cluster-setup
 └── velero
 ```
 
-#### Network
+### Network
 - Cluster folder contains configuration file related to VPC, subnet, routing and different component of network.
 - it consist of 2 availability zone for **high availability** so even if one az goes down we have compute power to schedule out application in another az. 
 ![Subnets](assets/network/subnet.png)
@@ -55,11 +55,15 @@ cluster-setup
 ![Route](assets/network/route.png)
 - For creating network, I am using **Terraform AWS provider**
 
-#### Cluster
-Cluster consist of EKS cluster along with its component like Node group, storage volume (EBS) autoscaling group, launch template and some security groups and IAM role.
-Autoscaling group **fault toleration** to our cluster, it spin up instances immidiatly if our current instance/s is mark unhealthly in EC2. We have *min, max and desire* confuguration for managing those instances.
-We can also use spot node along with on demand node to manage cost in out infrastructure as spot node is ~70% cheaper than on demand
-Security group manages in out access to our network and some IAM roles with policies are also get created for nodes to access aws resources like autoscaling.
+### Cluster
+- Cluster consist of EKS cluster along with its component like Node group, storage volume (EBS) autoscaling group, launch template and some security groups and IAM role.
+![Cluster](assets/cluster/cluster.png)
+- Autoscaling group **fault toleration** to our cluster, it spin up instances immidiatly if our current instance/s is mark unhealthly in EC2. We have *min, max and desire* confuguration for managing those instances.
+![Autoscaling](assets/cluster/autoscaling.png)
+![Node](assets/cluster/nodegroup.png)
+- We can also use spot node along with on demand node to manage cost in out infrastructure as spot node is ~70% cheaper than on demand
+- Security group manages in out access to our network and some IAM roles with policies are also get created for nodes to access aws resources like autoscaling.
+![Info](assets/cluster/clusterinfo.png)
 
 #### post-init-cluster
 Additinal component like storage class, cluster autoscaler, vault authentication mechanism installing different operators include in post init.
