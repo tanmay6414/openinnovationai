@@ -1,4 +1,5 @@
-# Quick Links
+# Open Innovation Assignment
+## Quick Links
 [Open Innovation Assignment](#problem-statement)<br>
 [Proposed Solution](#proposed-solution)<br>
 [frontend-backend-database Application Structure](#frontend-backend-database-application-structure)<br>
