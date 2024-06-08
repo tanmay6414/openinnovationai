@@ -1,4 +1,7 @@
 [Open Innovation Assignment](#problem-statement)
+[Proposed Solution](#proposed-solution)
+[frontend-backend-database Application Structure](#frontend-backend-database-application-structure)
+[Infrastructure CI/CD Process](#infrastructure-cicd-process)
 ### Problem Statement
 You are tasked to implement a platform to support a microservices architecture composed of a backend service, frontend service and PostgreSQL database with the
 following requirements
