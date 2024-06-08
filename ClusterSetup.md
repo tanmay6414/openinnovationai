@@ -1,6 +1,6 @@
 
 ## Network
-- Cluster folder contains configuration file related to VPC, subnet, routing and different component of network.
+- Network folder contains configuration file related to VPC, subnet, routing and different component of network.
 - it consist of 2 availability zone for **high availability** so even if one az goes down we have compute power to schedule out application in another az. 
 ![Subnets](assets/network/subnet.png)
 - Also all the worker nodes are in pivate subnet so that **they can not be publically accessible**, and for internet connection in private subnet I am using NAT Gateway which is managed NAT instance by AWS.
