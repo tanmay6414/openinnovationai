@@ -47,9 +47,12 @@ cluster-setup
 ```
 
 #### Network
-Cluster folder contains configuration file related to VPC, subnet, routing and different component of network.
-it consist of 2 availability zone for **high availability** so even if one az goes down we have compute power to schedule out application in another az. 
+- Cluster folder contains configuration file related to VPC, subnet, routing and different component of network.
+- it consist of 2 availability zone for **high availability** so even if one az goes down we have compute power to schedule out application in another az. 
+![Subnets](assets/network/Screenshot 2024-06-08 at 2.44.15 PM.png)
 Also all the worker nodes are in pivate subnet so that **they can not be publically accessible**, and for internet connection in private subnet I am using NAT Gateway which is managed NAT instance by AWS.
+![NAT](assets/network/Screenshot 2024-06-08 at 2.44.33 PM.png)
+![Route](assets/network/Screenshot 2024-06-08 at 2.44.45 PM.png)
 For creating network, I am using **Terraform AWS provider**
 
 #### Cluster
