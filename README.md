@@ -22,13 +22,29 @@ following requirements
 - Observability - Grafana + Newrelic
 
 ### Proposed Solution
-- I am using Docker package and manage above application as it consistent and isolated environment deployment across different application.
-- For orchestring docker container I am using Kubernetes. We have option like docker-sworm and other but kubenrtes have lots of advantages over such platform such as scalability, scheduling ease, easy administration, self healing, fault tolerent and kubenrtes is highly available along with good community support.
-- I am using AWS public cloud for hosting all those component.
-- For this solution, i am deploying Kubernetes cluster using EKS with managed node group. 
->EKS is managed Kubernetes service provided by AWS which provide high availability (3 master), Enhance security, easy upgrade statergy.
-So that we can focus on system reliability rather than spending lots of time on administration.
-
+- **Infrastructure Platform -** 
+  - I will used **AWS public cloud** for provisioning all my workloads.
+  - AWS works on pay per use
+- **Orchestration Platform -** 
+  - I will used AWS **EKS Kubernetes** for orchestration.
+  - Kubernetes have lots of advantages over other platform such as scalability, scheduling ease, easy administration, self healing, fault tolerent and kubernertes is highly available along with good community support.
+- **Containerization Platform -** 
+  - I will used **Docker** for containerization.
+  - Kubernetes is a  orchestration platform for containers 
+- **Infrastructure Automation -**
+  - I will use **Terraform** for provisioning infrastructure.
+  - Terraform maintain state of infra.
+  - Using **Atlantis** for contineous deployment of infrastructure with terraform
+- **Automate Deployment of microservices -**
+  - I will use **Jenkins** for CI purpose of different microservices. Each service has its own repository.
+  - For CD i will use **ArgoCD** application as it provide neat UI and less configuration.
+  - Also **Helm chart** for deploying application across env.
+- **Monitoring -**
+  - **Prometheus stack** for metrics collection.
+  - **Newrelic** for logging, synthetic checks, scripted monitors and graph.
+  - **Pagerduty** for alerting.
+- **Monitoring -**
+  - Using **Terratest**
 
 ## frontend-backend-database structure
 I have created 2 github repository [openinnovationai-frontend](https://github.com/tanmay6414/openinnovationai-frontend) and [openinnovationai-backend](https://github.com/tanmay6414/openinnovationai-backend)
@@ -305,5 +321,5 @@ alertmanager:
 ```
 - Apply default prometheus rule for kubenrtes (easily available on google)
 - [Sample Rule](/cluster-setup/monitoring/rule.yaml)
-- After intentinally stoping application in qa namespace we got below notification on slack.
+- After intentinally draining a node we got below notification on slack.
 ![Alert](/assets/monitoring/alert.png)
