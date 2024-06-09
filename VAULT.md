@@ -8,6 +8,9 @@
 - We also need a **vault-agent/Banzaicloud webhook** running in our cluster to mutate our pod with vault binary.
 - Kubernetes configuration to vault can be found [here](/cluster-setup/post-init-cluster/main.tf).
 
+# Flow
+![VFlow](/assets/vault/Vault.jpg)<br><br>
+
 # Configure Vault.
 - I have created one ACL policy and one Kubernetes auth backend role for our cluster by providing access to all namespaces, serviceaccount and read access to whole kv path.
 - You can create a role and policy with specific access only inside Vault.
