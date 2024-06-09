@@ -26,24 +26,24 @@ following requirements
 # Proposed Solution
 - **SCM -**  Github
 - **Infrastructure Platform -** 
-  - I will used **AWS public cloud** for provisioning all my workloads.
+  - I will use **AWS public cloud** for provisioning all my workloads.
   - AWS works on pay per use
 - **Orchestration Platform -** 
-  - I will used AWS **EKS Kubernetes** for orchestration.
-  - Kubernetes have lots of advantages over other platform such as scalability, scheduling ease, easy administration, self healing, fault tolerent and kubernertes is highly available along with good community support.
+  - I will use AWS **EKS Kubernetes** for orchestration.
+  - Kubernetes have lots of advantages over other platform such as scalability, scheduling ease, easy administration, self healing, fault tolerant and Kubernetes is highly available along with good community support.
 - **Containerization Platform -** 
-  - I will used **Docker** for containerization.
-  - Kubernetes is a  orchestration platform for containers 
+  - I will use **Docker** for containerization.
+  - Kubernetes is an orchestration platform for containers 
 - **Secret Management -** 
-  - Used **Hashicorp Vault** for secret management in Kubernrtes.
+  - Used **Hashicorp Vault** for secret management in Kubernetes.
   - It does not show actual secret even if you exec into pods.  
 - **Infrastructure Automation -**
   - I will use **Terraform** for provisioning infrastructure.
   - Terraform maintain state of infra.
-  - Using **Atlantis** for contineous deployment of infrastructure with terraform
+  - Using **Atlantis** for continuous deployment of infrastructure with terraform
 - **Automate Deployment of microservices -**
   - I will use **Jenkins** for CI purpose of different microservices. Each service has its own repository.
-  - For CD i will use **ArgoCD** application as it provide neat UI and less configuration.
+  - For CD i will use **ArgoCD** application as it provides neat UI and less configuration.
   - Also **Helm chart** for deploying application across env.
 - **Monitoring -**
   - **Prometheus stack** for metrics collection.
@@ -76,14 +76,14 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 # Release process
 1. Each Application have its own Github Repository.
 2. I prefer to maintain 2 main branched one master and release/*. Master for dev to test and release/* for higher env.
-3. Devloper created a Pull request on feature branch.
+3. Developer created a Pull request on feature branch.
 4. Jenkins CI get trigger.
 5. Checkout from version control.
 6. Adding/updating required helm repo for pulling and pushing helm chart
 7. Building application binary.
 8. Execute compliance check and Unit test.
 9. Once this test passes we I am building my Dockerfile with **ci** tag on it and updating the docker image tag in helm values file. Also update the helm version by merging PR no and build name
-10. Package this updated chart and deploy the sample application on kubenrtes.
+10. Package this updated chart and deploy the sample application on Kubernetes.
 11. Installed required dependency application
 12. Execute integration test on whole application stack.
 13. Execute sonar test
