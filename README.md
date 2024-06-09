@@ -11,9 +11,10 @@
   - **Process explanation**
     - [Release process](#release-process)
     - [Creating Cluster and its required resources](/ClusterSetup.md)
-    - [Explaining CD process for Cluster](/ClusterDeploymentCD.md)
-    - [Explaining CD process for Application](/AppDeploymentCD.md)
+    - [Explaining CD for Cluster](/ClusterDeploymentCD.md)
+    - [Explaining CD for Application](/AppDeploymentCD.md)
     - [Explain monitoring and alerting process](/Monitoring.md)
+    - [Integration of Vault](/VAULT.md)
 
 ### Problem Statement
 You are tasked to implement a platform to support a microservices architecture composed of a backend service, frontend service and PostgreSQL database with the
@@ -98,3 +99,4 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
   - [Explaining CD process for Cluster](/ClusterDeploymentCD.md)
   - [Explaining CD process for Application](/AppDeploymentCD.md)
   - [Explain monitoring and alerting process](/Monitoring.md)
+  - [Integration of Vault](/VAULT.md)
