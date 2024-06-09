@@ -35,7 +35,7 @@ following requirements
   - I will used **Docker** for containerization.
   - Kubernetes is a  orchestration platform for containers 
 - **Secret Management -** 
-  - Used Hashicorp Vault for secret management in Kubernrtes.
+  - Used **Hashicorp Vault** for secret management in Kubernrtes.
   - It does not show actual secret even if you exec into pods.  
 - **Infrastructure Automation -**
   - I will use **Terraform** for provisioning infrastructure.
