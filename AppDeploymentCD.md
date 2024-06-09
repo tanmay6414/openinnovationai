@@ -80,3 +80,11 @@ spec:
 - We can provide access for dev and qa as per there requirnment, they can take ownership of there app.
 ![App](assets/argo/apps.png)
 ![Sync](assets/argo/sync.png)
+
+
+- [Main Page](/README.md)
+- **Process explanation**
+  - [Creating Cluster and its required resources](/ClusterSetup.md)
+  - [Explaining CD process for Cluster](/ClusterDeploymentCD.md)
+  - [Explaining CD process for Application](/AppDeploymentCD.md)
+  - [Explain monitoring and alerting process](/Monitoring.md)

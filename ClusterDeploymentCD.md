@@ -64,4 +64,9 @@ atlantis plan -p network
 - If apply failed PR will not get merges
 ![Apply](assets/atlantis/apply.png)
 
-
+- [Main Page](/README.md)
+- **Process explanation**
+  - [Creating Cluster and its required resources](/ClusterSetup.md)
+  - [Explaining CD process for Cluster](/ClusterDeploymentCD.md)
+  - [Explaining CD process for Application](/AppDeploymentCD.md)
+  - [Explain monitoring and alerting process](/Monitoring.md)
