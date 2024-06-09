@@ -31,30 +31,30 @@ cluster-setup
 ## Network
 - Network folder contains configuration file related to VPC, subnet, routing and different component of network.
 - it consist of 2 availability zone for **high availability** so even if one az goes down we have compute power to schedule out application in another az. 
-![Subnets](assets/network/subnet.png)
+![Subnets](assets/network/subnet.png)<br>
 - Also all the worker nodes are in private subnet so that **they cannot be publicly accessible**, and for internet connection in private subnet I am using NAT Gateway which is managed NAT instance by AWS.
-![NAT](assets/network/nat.png)
-![Route](assets/network/route.png)
+![NAT](assets/network/nat.png)<br>
+![Route](assets/network/route.png)<br>
 - For creating network, I am using **Terraform AWS provider**
 
 
 ## Cluster
 - Cluster consist of EKS cluster along with its component like Node group, storage volume (EBS) autoscaling group, launch template and some security groups and IAM role.
-![Cluster](assets/cluster/cluster.png)
+![Cluster](assets/cluster/cluster.png)<br>
 - Autoscaling group **fault toleration** to our cluster, it spin up instances immediately if our current instance/s is mark unhealthy in EC2. We have *min, max and desire* configuration for managing those instances.
-![Autoscaling](assets/cluster/autoscaling.png)
-![Node](assets/cluster/nodegroup.png)
+![Autoscaling](assets/cluster/autoscaling.png)<br>
+![Node](assets/cluster/nodegroup.png)<br>
 - We can also use spot node along with on demand node to manage cost in out infrastructure as spot node is ~70% cheaper than on demand
 - Security group manages in out access to our network and some IAM roles with policies are also get created for nodes to access aws resources like autoscaling.
-![Info](assets/cluster/clusterinfo.png)
+![Info](assets/cluster/clusterinfo.png)<br>
 
 ## post-init-cluster
 - Additional component like storage class, cluster autoscaler, vault authentication mechanism installing different operators include in post init.
 - All those tool help us to manage workload in our cluster.
-![storage](assets/post-init/storage.png)
+![storage](assets/post-init/storage.png)<br>
 - In out module we have storageclass to dynamically creates volume for us, cluster-autoscaler to increase resources in cluster if we are exhausing existing one to provide availability and fault-tolerance.
 - I also include Hashicorp vault configuration to manage secrets throughout the ci/cd pipeline. It is also useful for providing temporary access to DB and AWS env.
-![Vault](assets/post-init/vault.png)
+![Vault](assets/post-init/vault.png)<br>
 
 ## auth security
 - This module consist of dex and login ingress setup.

@@ -78,8 +78,8 @@ spec:
 - **destination** define the cluster on which we want to deploy application.
 - **sources** define the helm repo and github repo for helm chart and values file.
 - We can provide access for dev and qa as per there requirnment, they can take ownership of there app.
-![App](assets/argo/apps.png)
-![Sync](assets/argo/sync.png)
+![App](assets/argo/apps.png)<br>
+![Sync](assets/argo/sync.png)<br>
 
 
 - [Main Page](/README.md)

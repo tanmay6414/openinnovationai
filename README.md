@@ -62,16 +62,16 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 
 
 # Infrastructure CI/CD Process
-![CCICD](/assets/cluster/ClusterCICD.jpg)
+![CCICD](/assets/cluster/ClusterCICD.jpg)<br>
 
 # Application CI/CD Process
-![CCICD](/assets/argo/ApplicationCiCD.jpg)
+![CCICD](/assets/argo/ApplicationCiCD.jpg)<br>
 
 # Monitoring Process
-![CCICD](/assets/monitoring/Monitoring.jpg)
+![CCICD](/assets/monitoring/Monitoring.jpg)<br>
 
 # How to achieve HA
-![CCICD](/assets/cluster/HA.jpg)
+![CCICD](/assets/cluster/HA.jpg)<br>
 
 
 # Release process
@@ -92,7 +92,7 @@ I have created 2 github repository [openinnovationai-frontend](https://github.co
 15. Package and published the helm and docker artifact on harbor repository.
 16. If branch == master, directly update the QA env  ArgoCD manifest file in openinnovationai repo
 17. If branch == release/*, create a PR on release branch on open a pull request on openinnovationai repo with updated version.
-![CI](assets/jenkins/jenkins.png)
+![CI](assets/jenkins/jenkins.png)<br>
 
 - **Process explanation**
   - [Creating Cluster and its required resources](/ClusterSetup.md)
