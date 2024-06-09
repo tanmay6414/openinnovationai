@@ -1,0 +1,32 @@
+controller:
+  name: controller
+  hostPort:
+    enabled: false
+    hostPorts:
+      http: 80
+      https: 443
+
+  ingressClassResource:
+    name: nginx
+    default: true
+  ingressClass: nginx
+  scope:
+    enabled: false
+    namespace: ""   # defaults to .Release.Namespace
+  
+  replicaCount: 2
+
+  service:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "120"
+      service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "${ssl_cert}"
+      service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+      service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+      service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*" # need this for ELB L4 to support client connection info
+      service.beta.kubernetes.io/aws-load-balancer-access-log-emit-interval: "5"
+
+    loadBalancerIP: ""
+    loadBalancerSourceRanges:
+    - 0.0.0.0/0
+    enableHttp: true
+    enableHttps: true

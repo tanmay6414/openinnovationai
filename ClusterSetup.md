@@ -16,6 +16,12 @@ cluster-setup
 │   └── variable.tf
 ├── dex
 ├── ingress
+│   ├── main.tf
+│   ├── provider.tf
+│   ├── values.yal
+│   └── variable.tf
+├── monitoring
+│   └── rule.yaml
 ├── network
 │   ├── main.tf
 │   ├── output.tf
@@ -27,6 +33,7 @@ cluster-setup
 │   └── variable.tf
 └── velero
 ```
+**Dex, monitoring and velero modules are empty, I have mentioned just for understanding**
 
 ## Network
 - Network folder contains configuration file related to VPC, subnet, routing and different component of network.
