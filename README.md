@@ -46,6 +46,7 @@ following requirements
   - I will use **Jenkins** for CI purpose of different microservices. Each service has its own repository.
   - For CD i will use **ArgoCD** application as it provides neat UI and less configuration.
   - Also **Helm chart** for deploying application across env.
+  - We will use **Ingress** for exposing out application
 - **Monitoring -**
   - **Prometheus stack** for metrics collection.
   - **Newrelic** for logging, synthetic checks, scripted monitors and graph.
