@@ -34,6 +34,9 @@ following requirements
 - **Containerization Platform -** 
   - I will used **Docker** for containerization.
   - Kubernetes is a  orchestration platform for containers 
+- **Secret Management -** 
+  - Used Hashicorp Vault for secret management in Kubernrtes.
+  - It does not show actual secret even if you exec into pods.  
 - **Infrastructure Automation -**
   - I will use **Terraform** for provisioning infrastructure.
   - Terraform maintain state of infra.
@@ -46,7 +49,7 @@ following requirements
   - **Prometheus stack** for metrics collection.
   - **Newrelic** for logging, synthetic checks, scripted monitors and graph.
   - **Pagerduty** for alerting.
-- **Monitoring -**
+- **Testing -**
   - Using **Terratest**
 
 # frontend-backend-database Application Structure
