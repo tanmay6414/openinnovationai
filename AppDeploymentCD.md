@@ -1,10 +1,10 @@
 # Automated Deployment for Application
-- Uses ArgoCD for CD process. Flux dont have any UI and not possible to give access to dev and QA. Tekton need lots of configuration and showing intermidiate issue.
+- Uses ArgoCD for CD process. Flux dont have any UI and not possible to give access to dev and QA. Tekton need lots of configuration and showing intermediate issue.
 
 # Installation of ArgoCD
-- ArgoCD is installed as Helm chart on kubenrtes cluster.
+- ArgoCD is installed as Helm chart on Kubernetes cluster.
 - have different component like controller, server, notification controller,workflow and repo server.
-- Helm values file for confuring argo with EKS
+- Helm values file for configure argo with EKS
 ```
 crds:
   keep: false
@@ -42,7 +42,7 @@ controller:
   - name: AWS_SECRET_ACCESS_KEY
     value: <secret-key>
 ```
-- Once Deployed create one ArgoCD [application](argo/cd/app-of-app.yaml) and mentioned the githubrepository folder and apply this manually 
+- Once deployed create one ArgoCD [application](argo/cd/app-of-app.yaml) and mentioned the githubrepository folder and apply this manually 
 - You also need to configure cluster, helm repo, harbor repo with it, you can find configuration [here](argo/) in this repository.
 - Because you created app of app you dont need to apply those file manually, just push changes on master.
 
@@ -77,7 +77,7 @@ spec:
 - **sync** policy define auto sync behaviour
 - **destination** define the cluster on which we want to deploy application.
 - **sources** define the helm repo and github repo for helm chart and values file.
-- We can provide access for dev and qa as per there requirnment, they can take ownership of there app.
+- We can provide access for dev and qa as per there requirement, they can take ownership of their app.
 ![App](assets/argo/apps.png)<br>
 ![Sync](assets/argo/sync.png)<br>
 

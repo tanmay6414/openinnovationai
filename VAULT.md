@@ -20,7 +20,7 @@
 ![Role](/assets/vault/role.png)<br><br>
 
 # Configure Deployment to mutate vault secret
-- After creeating ACL policy and K8s role, I have setup my Kubernetes deployment to mutate vault secrets.
+- After creating ACL policy and K8s role, I have setup my Kubernetes deployment to mutate vault secrets.
 - For this, I have added annotation to the deployment in out helm chart.
 - In our case, added annotation to both backend and database pod from [values.yaml](https://github.com/tanmay6414/openinnovationai-backend/blob/01e2d23eb30214b44c4239e1eb05ca405d90a78f/charts/backend/values.yaml#L24-L29) file.
 ![Annotation](/assets/vault/annotation.png)<br>
